@@ -85,7 +85,7 @@ function FeatureNews() {
             >
               <div className="absolute inset-0 bg-black bg-opacity-50 p-6 flex flex-col justify-end">
                 <p className="text-sm text-white mb-2 uppercase">{featuredArticles[0].type}</p>
-                <h3 className="text-3xl text-white font-bold mb-4">{featuredArticles[0].title}</h3>
+                <h3 className="text-2xl text-white font-bold mb-4">{featuredArticles[0].title}</h3>
                 <p className="text-sm text-gray-300">{featuredArticles[0].time}</p>
               </div>
             </div>
@@ -107,11 +107,28 @@ function FeatureNews() {
             </div>
           </div>
 
+          
+          {/* Third Column: Visible only on small screen */}
+          <div className="w-full md:hidden">
+            <div
+              className="relative bg-cover bg-center overflow-hidden h-96"
+              style={{
+                backgroundImage: `url(${featuredArticles[2].image})`, // smaller article image
+              }}
+            >
+              <div className="absolute inset-0 bg-black bg-opacity-50 p-6 flex flex-col justify-end">
+                <p className="text-sm text-white mb-2 uppercase">{featuredArticles[2].type}</p>
+                <h3 className="text-2xl text-white font-bold mb-4">{featuredArticles[2].title}</h3>
+                <p className="text-sm text-gray-300">{featuredArticles[2].time}</p>
+              </div>
+            </div>
+          </div>
+
           {/* Third Column: Two Smaller Articles */}
           <div className="w-full md:col-span-3 space-y-8">
             {/* First smaller article */}
             <div
-              className="relative bg-cover bg-center overflow-hidden h-44"
+              className="relative bg-cover bg-center overflow-hidden h-44 md:block hidden"
               style={{
                 backgroundImage: `url(${featuredArticles[2].image})`, // smaller article image
               }}
@@ -140,27 +157,31 @@ function FeatureNews() {
           </div>
         </div>
 
-        {/* Thumbnails Section: Smaller thumbnail articles displayed in a row for desktop */}
-        <div className="hidden md:flex justify-between mt-8">
-          {/* Mapping through the thumbnails to display them */}
-          {articleThumbnails.map((thumbnail, index) => (
-            <div key={index} className="flex items-center w-1/5">
-              {/* Thumbnail image */}
-              <div
-                className="w-16 h-16 bg-cover bg-center rounded-full mr-3"
-                style={{
-                  backgroundImage: `url(${thumbnail.image})`, // thumbnail image
-                  filter: "grayscale(100%)", // Applying grayscale filter to thumbnails
-                }}
-              ></div>
-              {/* Thumbnail title and time */}
-              <div>
-                <p className="text-xs text-gray-500">{thumbnail.time}</p>
-                <p className="text-xs font-medium text-gray-700">{thumbnail.title}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+       {/* Thumbnails Section: Smaller thumbnail articles displayed in a row for desktop */}
+<div className="hidden md:flex justify-between mt-8">
+  {articleThumbnails.map((thumbnail, index) => (
+    <div key={index} className="flex items-start w-1/5">
+      {/* Thumbnail Image */}
+      <div
+  className="w-80 h-24 bg-cover bg-center rounded-full mr-3"
+  style={{
+    backgroundImage: `url(/image/image.png)`,
+  }}
+></div>
+
+
+      {/* Thumbnail Details (Title and Time) */}
+      <div>
+        <p className="text-xs text-gray-400">{thumbnail.time}</p>
+        <p className="text-sm font-semibold text-gray-900 leading-snug">
+          {thumbnail.title}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+
+
       </div>
     </section>
   );
