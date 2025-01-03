@@ -3,6 +3,8 @@ import React from 'react';
 import Navbar from './assets/components/Navbar';
 import LandingPage from './assets/components/LandingPage';
 import FeatureNews from './assets/components/FeaturedNews';
+import Science from './assets/components/Science';
+import VideoHighlight from './assets/components/VideoHighlight';
 import './index.css';
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
       <Navbar />
       <LandingPage /> 
       <FeatureNews />
+      <Science />
+      <VideoHighlight />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { TiArrowRightThick } from "react-icons/ti";
 
 function FeatureNews() {
   // Featured articles data
@@ -67,8 +68,8 @@ function FeatureNews() {
             <a href="/more-news" className="text-black-600 font-bold hover:underline">
               More NASA News
             </a>
-            <span className="w-6 h-6 flex items-center justify-center bg-red-500 text-white rounded-full text-sm">
-              →
+            <span className="w-6 h-6 flex items-center justify-center border-4 border-red-500 text-red-500 rounded-full text-sm">
+             <TiArrowRightThick />
             </span>
           </div>
         </div>
