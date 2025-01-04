@@ -5,6 +5,7 @@ import LandingPage from './assets/components/LandingPage';
 import FeatureNews from './assets/components/FeaturedNews';
 import Science from './assets/components/Science';
 import VideoHighlight from './assets/components/VideoHighlight';
+import EarthInfoCenter from './assets/components/EarthInfoCenter';
 import './index.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <FeatureNews />
       <Science />
       <VideoHighlight />
+      <EarthInfoCenter />
     </div>
   )
 }
