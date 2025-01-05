@@ -6,6 +6,8 @@ import FeatureNews from './assets/components/FeaturedNews';
 import Science from './assets/components/Science';
 import VideoHighlight from './assets/components/VideoHighlight';
 import EarthInfoCenter from './assets/components/EarthInfoCenter';
+import ImageOfTheDay from './assets/components/ImageOfTheDay';
+import ImageNasa from './assets/components/ImageNasa';
 import './index.css';
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
       <Science />
       <VideoHighlight />
       <EarthInfoCenter />
+      <ImageOfTheDay />
+      <ImageNasa />
     </div>
   )
 }
