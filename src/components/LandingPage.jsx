@@ -1,7 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import EarthInfoCenter from "./EarthInfoCenter";
+import Explore from "./Explore";
+
+import Footer from "./Footer";
+import ImageNasa from "./ImageNasa";
+import ImageOfTheDay from "./ImageOfTheDay";
+import MoreNews from "./MoreNews";
+import Science from "./Science";
+import VideoHighlight from "./VideoHighlight";
+import FeatureNews from "./FeatureNews";
+
 
 function LandingPage() {
+  const navigate = useNavigate();
   return (
+    <>
     <section
       className="relative w-full h-screen bg-black flex items-center justify-start px-8"
       style={{
@@ -23,8 +37,19 @@ function LandingPage() {
         <button className="px-6 py-3 bg-red-600 text-white text-sm font-semibold rounded-md hover:bg-red-700 focus:outline-none">
           Invention & Technology
         </button>
+
       </div>
     </section>
+    
+    <Science />
+    <VideoHighlight />
+    <EarthInfoCenter />
+    <ImageOfTheDay />
+    <ImageNasa />
+    <Explore />
+    <MoreNews />
+    <Footer />
+  </>
   );
 }
 
