@@ -1,8 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is correctly imported
 
 const News = () => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate('/news'); // Update to the correct route path
+  };
+
   const moreNews = [
-    { title: "APOD", image: "path-to-apod-image", link: "/apod" },
+    { title: "APOD", image: "path-to-apod-image", link: "/news" },
     { title: "SpaceX Mission", image: "path-to-spacex-image", link: "/spacex-mission" },
     { title: "People of NASA Science", image: "path-to-nasa-image", link: "/nasa-people" },
     { title: "Skywatching", image: "path-to-skywatching-image", link: "/skywatching" },

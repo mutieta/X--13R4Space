@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import EarthInfoCenter from "./EarthInfoCenter";
 import Explore from "./Explore";
-
 import Footer from "./Footer";
 import ImageNasa from "./ImageNasa";
 import ImageOfTheDay from "./ImageOfTheDay";
@@ -40,7 +39,7 @@ function LandingPage() {
 
       </div>
     </section>
-    
+    <FeatureNews />
     <Science />
     <VideoHighlight />
     <EarthInfoCenter />

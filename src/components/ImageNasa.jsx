@@ -20,7 +20,7 @@ const ImageNasa = () => {
   ];
 
   return (
-    <div className="p-8">
+    <div className="p-8 bg-white">
       <h2 className="text-2xl font-bold mb-6">More NASA Images</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {galleries.map((gallery, index) => (
