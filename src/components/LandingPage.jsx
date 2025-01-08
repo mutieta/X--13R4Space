@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import EarthInfoCenter from "./EarthInfoCenter";
 import Explore from "./Explore";
-import Footer from "./Footer";
 import ImageNasa from "./ImageNasa";
 import ImageOfTheDay from "./ImageOfTheDay";
 import MoreNews from "./MoreNews";
@@ -47,7 +46,6 @@ function LandingPage() {
     <ImageNasa />
     <Explore />
     <MoreNews />
-    <Footer />
   </>
   );
 }

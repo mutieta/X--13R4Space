@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from './components/LandingPage';
 import NewsPage from './components/NewsPage';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="*" element={<div>404 - Page Not Found</div>}/>
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }
