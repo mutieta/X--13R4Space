@@ -4,19 +4,15 @@ import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is correct
 const News = () => {
   const navigate = useNavigate();
 
-  const handleLogoClick = () => {
-    navigate('/news'); // Update to the correct route path
-  };
-
   const moreNews = [
     { title: "APOD", image: "path-to-apod-image", link: "/news" },
-    { title: "SpaceX Mission", image: "path-to-spacex-image", link: "/spacex-mission" },
-    { title: "People of NASA Science", image: "path-to-nasa-image", link: "/nasa-people" },
-    { title: "Skywatching", image: "path-to-skywatching-image", link: "/skywatching" },
-    { title: "Mars Exploration", image: "path-to-mars-image", link: "/mars-exploration" },
-    { title: "Astrobiology", image: "path-to-astrobiology-image", link: "/astrobiology" },
-    { title: "Planetary Defense", image: "path-to-defense-image", link: "/planetary-defense" },
-    { title: "Climate Change", image: "path-to-climate-change-image", link: "/climate-change" },
+    { title: "SpaceX Mission", image: "path-to-spacex-image", link: "/news" },
+    { title: "People of NASA Science", image: "path-to-nasa-image", link: "/news" },
+    { title: "Skywatching", image: "path-to-skywatching-image", link: "/news" },
+    { title: "Mars Exploration", image: "path-to-mars-image", link: "/news" },
+    { title: "Astrobiology", image: "path-to-astrobiology-image", link: "/news" },
+    { title: "Planetary Defense", image: "path-to-defense-image", link: "/news" },
+    { title: "Climate Change", image: "path-to-climate-change-image", link: "/news" },
   ];
 
   return (
@@ -29,13 +25,13 @@ const News = () => {
       {/* Card Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {moreNews.map((item, index) => (
-          <a
+          <div
             key={index}
-            href={item.link}
-            className="relative group bg-black text-white overflow-hidden"
+            onClick={() => navigate(item.link)}
+            className="relative group bg-black text-white overflow-hidden cursor-pointer"
           >
             <img
-              src={item.image}
+              src={item.image || "path-to-placeholder-image"}
               alt={item.title}
               className="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-300"
             />
@@ -45,7 +41,7 @@ const News = () => {
             <div className="absolute bottom-4 right-4 bg-red-500 w-6 h-6 rounded-full flex items-center justify-center">
               <span className="text-white text-sm">→</span>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>

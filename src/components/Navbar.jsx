@@ -3,10 +3,16 @@ import { HiOutlineArrowCircleDown } from "react-icons/hi";
 import { FiChevronDown, FiSearch } from "react-icons/fi";
 import { FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate for navigation
+
+  const handleProfileClick = () => {
+    navigate("/subscribe"); // Navigate to the Subscribe page
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
@@ -76,15 +82,10 @@ function Navbar() {
         </div>
 
         {/* Profile Icon */}
-        <div className="hidden lg:block relative group">
-          <FaRegUserCircle className="text-white text-2xl cursor-pointer hover:text-gray-300" />
-          <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
-            <ul>
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Sign Up</li>
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Log In</li>
-            </ul>
-          </div>
-        </div>
+        <FaRegUserCircle
+          className="text-2xl cursor-pointer text-white hover:text-gray-300"
+          onClick={handleProfileClick} // Navigate when clicked
+        />
       </div>
 
       {/* Mobile Menu */}
@@ -107,67 +108,55 @@ function Navbar() {
                 <li className="hover:text-gray-300 cursor-pointer">Audio</li>
               </ul>
             </div>
-            <div>
-              <h3 className="font-bold text-lg">Account</h3>
-              <ul className="space-y-2">
-                <li className="hover:text-gray-300 cursor-pointer">Sign Up</li>
-                <li className="hover:text-gray-300 cursor-pointer">Log In</li>
-              </ul>
-            </div>
           </div>
         </div>
       )}
-      
-{/* Mobile Search */}
-{isSearchOpen && (
-    <div className=" bg-black absolute top-0 left-0 w-full h-full text-white p-6 z-50">
-      <div className="flex justify-between items-center mb-6">
-        <input
-          type="text"
-          placeholder="Search the universe"
-          className="w-full px-4 py-2 bg-black text-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
-        />
-        <button
-          className="ml-4 text-2xl text-white focus:outline-none"
-          onClick={toggleSearch}
-        >
-          <AiOutlineClose />
-        </button>
-      </div>
 
-    {/* Suggested Searches */}
-      <div>
-        <h3 className="bg-black text-lg font-bold mb-4">Suggested Searches</h3>
-        <ul className="space-y-4 bg-black">
-          {[
-            "Climate Change",
-            "Artemis",
-            "Expedition 64",
-            "Mars Perseverance",
-            "SpaceX Crew-2",
-            "International Space Station",
-          ].map((item, index) => (
-            <li
-              key={index}
-              className="flex items-center justify-between border-b border-gray-200 pb-2"
+      {/* Mobile Search */}
+      {isSearchOpen && (
+        <div className="bg-black absolute top-0 left-0 w-full h-full text-white p-6 z-50">
+          <div className="flex justify-between items-center mb-6">
+            <input
+              type="text"
+              placeholder="Search the universe"
+              className="w-full px-4 py-2 bg-black text-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            />
+            <button
+              className="ml-4 text-2xl text-white focus:outline-none"
+              onClick={toggleSearch}
             >
-              <div className="flex items-center space-x-2">
-                <FiSearch className="text-gray-500" />
-                <span>{item}</span>
-              </div>
-               
-            </li>
-          ))}
-          <li className="text-blue-500 cursor-pointer pt-2 pb-7">View All Topics A-Z</li>
-        </ul>
-      </div>
-    </div>
-)}
+              <AiOutlineClose />
+            </button>
+          </div>
+          {/* Suggested Searches */}
+          <div>
+            <h3 className="bg-black text-lg font-bold mb-4">Suggested Searches</h3>
+            <ul className="space-y-4 bg-black">
+              {[
+                "Climate Change",
+                "Artemis",
+                "Expedition 64",
+                "Mars Perseverance",
+                "SpaceX Crew-2",
+                "International Space Station",
+              ].map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-center justify-between border-b border-gray-200 pb-2"
+                >
+                  <div className="flex items-center space-x-2">
+                    <FiSearch className="text-gray-500" />
+                    <span>{item}</span>
+                  </div>
+                </li>
+              ))}
+              <li className="text-blue-500 cursor-pointer pt-2 pb-7">View All Topics A-Z</li>
+            </ul>
+          </div>
+        </div>
+      )}
     </header>
   );
-}
-
-
+};
 
 export default Navbar;
-

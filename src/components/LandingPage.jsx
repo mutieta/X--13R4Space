@@ -8,12 +8,15 @@ import MoreNews from "./MoreNews";
 import Science from "./Science";
 import VideoHighlight from "./VideoHighlight";
 import FeatureNews from "./FeatureNews";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 
 function LandingPage() {
   const navigate = useNavigate();
   return (
     <>
+    <Navbar />
     <section
       className="relative w-full h-screen bg-black flex items-center justify-start px-8"
       style={{
@@ -46,6 +49,7 @@ function LandingPage() {
     <ImageNasa />
     <Explore />
     <MoreNews />
+    <Footer />
   </>
   );
 }
