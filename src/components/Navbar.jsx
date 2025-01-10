@@ -1,27 +1,31 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { HiOutlineArrowCircleDown } from "react-icons/hi";
 import { FiChevronDown, FiSearch } from "react-icons/fi";
 import { FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate for navigation
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control mobile menu visibility
+  const [isSearchOpen, setIsSearchOpen] = useState(false); // State to control search overlay visibility
 
+  // Function to handle navigation to the subscribe page
   const handleProfileClick = () => {
-    navigate("/subscribe"); // Navigate to the Subscribe page
+    navigate("/subscribe");
   };
 
+  // Toggle mobile menu
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  // Toggle search overlay
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
 
   return (
     <header className="w-full flex justify-between items-center p-4 bg-black relative z-50">
       {/* Left Section */}
       <div className="flex items-center space-x-4">
-        {/* Hamburger Menu */}
+        {/* Hamburger Menu (Visible on mobile screens) */}
         <button
           className="text-white text-2xl lg:hidden focus:outline-none"
           onClick={toggleMenu}
@@ -31,12 +35,13 @@ const Navbar = () => {
           {isMenuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
         </button>
 
-        {/* Explore Dropdown */}
+        {/* Explore Dropdown (Visible on large screens) */}
         <div className="relative group hidden lg:block">
           <button className="flex items-center space-x-2 px-6 py-2 text-white text-3xl font-bold hover:text-gray-300 focus:outline-none">
             <span>Explore</span>
             <HiOutlineArrowCircleDown />
           </button>
+          {/* Dropdown menu */}
           <div className="absolute left-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
             <ul>
               <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Option 1</li>
@@ -46,7 +51,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Search Bar */}
+        {/* Search Bar (Visible on large screens) */}
         {!isSearchOpen && (
           <input
             type="text"
@@ -58,12 +63,13 @@ const Navbar = () => {
 
       {/* Right Section */}
       <div className="flex items-center space-x-4">
-        {/* Multimedia Dropdown */}
+        {/* Multimedia Dropdown (Visible on large screens) */}
         <div className="relative group hidden lg:block">
           <button className="flex items-center space-x-2 px-4 py-2 text-white hover:text-gray-300 focus:outline-none">
             <span>Multimedia</span>
             <FiChevronDown />
           </button>
+          {/* Dropdown menu */}
           <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
             <ul>
               <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Photos</li>
@@ -73,7 +79,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Search Icon (Mobile) */}
+        {/* Search Icon (Visible on mobile screens) */}
         <div className="lg:hidden">
           <FiSearch
             className="text-white text-2xl cursor-pointer hover:text-gray-300"
@@ -82,10 +88,12 @@ const Navbar = () => {
         </div>
 
         {/* Profile Icon */}
-        <FaRegUserCircle
-          className="text-2xl cursor-pointer text-white hover:text-gray-300"
-          onClick={handleProfileClick} // Navigate when clicked
-        />
+        <div className="hidden lg:block relative">
+          <FaRegUserCircle
+            className="text-white text-2xl cursor-pointer hover:text-gray-300"
+            onClick={handleProfileClick}
+          />
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -112,7 +120,7 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Mobile Search */}
+      {/* Search Overlay */}
       {isSearchOpen && (
         <div className="bg-black absolute top-0 left-0 w-full h-full text-white p-6 z-50">
           <div className="flex justify-between items-center mb-6">
@@ -128,10 +136,11 @@ const Navbar = () => {
               <AiOutlineClose />
             </button>
           </div>
+
           {/* Suggested Searches */}
           <div>
-            <h3 className="bg-black text-lg font-bold mb-4">Suggested Searches</h3>
-            <ul className="space-y-4 bg-black">
+            <h3 className="text-lg font-bold mb-4">Suggested Searches</h3>
+            <ul className="space-y-4">
               {[
                 "Climate Change",
                 "Artemis",
@@ -150,7 +159,9 @@ const Navbar = () => {
                   </div>
                 </li>
               ))}
-              <li className="text-blue-500 cursor-pointer pt-2 pb-7">View All Topics A-Z</li>
+              <li className="text-blue-500 cursor-pointer pt-2 pb-7">
+                View All Topics A-Z
+              </li>
             </ul>
           </div>
         </div>

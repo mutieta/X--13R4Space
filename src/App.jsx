@@ -5,7 +5,7 @@ import LandingPage from './components/LandingPage';
 import NewsPage from './components/NewsPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer'; 
-import Subscribe from "./components/Subscribe";
+import Subscribe from "./components/LetterBox";
 
 function App() {
   return (
