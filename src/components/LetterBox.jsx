@@ -1,11 +1,11 @@
 import React from "react";
 
-const SignUpLogIn = () => {
+const LetterBox = () => {
   return (
-    <div className="min-h-screen bg-black flex flex-col justify-center items-center text-white">
+    <div className="min-h-screen bg-black flex flex-col justify-center items-center text-white pt-5">
       {/* NASA Logo */}
       <img
-        src="path-to-nasa-logo" // Replace with the actual path to the logo
+        src="./image/nasa-logo.png" // Replace with the actual path to the NASA logo image
         alt="NASA Logo"
         className="w-20 mb-4"
       />
@@ -16,9 +16,9 @@ const SignUpLogIn = () => {
         Stay up-to-date on the latest news from NASA—from Earth to the Moon, the Solar System, and beyond.
       </p>
 
-      {/* Form */}
+      {/* Sign-Up Form */}
       <form className="w-full max-w-md">
-        {/* Email Field */}
+        {/* Email Field (Required) */}
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm mb-2">
             * Email
@@ -27,6 +27,7 @@ const SignUpLogIn = () => {
             type="email"
             id="email"
             className="w-full px-4 py-2 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring focus:ring-blue-500"
+            placeholder="Enter your email"
             required
           />
         </div>
@@ -40,6 +41,7 @@ const SignUpLogIn = () => {
             type="text"
             id="firstName"
             className="w-full px-4 py-2 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring focus:ring-blue-500"
+            placeholder="Enter your first name"
           />
         </div>
 
@@ -52,6 +54,7 @@ const SignUpLogIn = () => {
             type="text"
             id="lastName"
             className="w-full px-4 py-2 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring focus:ring-blue-500"
+            placeholder="Enter your last name"
           />
         </div>
 
@@ -64,12 +67,13 @@ const SignUpLogIn = () => {
             type="text"
             id="city"
             className="w-full px-4 py-2 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring focus:ring-blue-500"
+            placeholder="Enter your city"
           />
         </div>
 
         {/* Country and State/Province Fields */}
         <div className="flex gap-4 mb-4">
-          {/* Country */}
+          {/* Country Field */}
           <div className="flex-1">
             <label htmlFor="country" className="block text-sm mb-2">
               Country
@@ -77,23 +81,55 @@ const SignUpLogIn = () => {
             <select
               id="country"
               className="w-full px-4 py-2 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring focus:ring-blue-500"
+              defaultValue=""
             >
-              <option>Select a country</option>
+              <option value="" disabled>
+                Select a country
+              </option>
+              <option>Cambodia</option>
               {/* Add more country options as needed */}
             </select>
           </div>
 
-          {/* State/Province */}
+          {/* State/Province Field */}
           <div className="flex-1">
             <label htmlFor="state" className="block text-sm mb-2">
-              State/Province
+              City/Province
             </label>
             <select
               id="state"
               className="w-full px-4 py-2 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring focus:ring-blue-500"
+              defaultValue=""
             >
-              <option>Select a state or province</option>
-              {/* Add more state/province options as needed */}
+              <option value="" disabled>
+                Select a city or province
+              </option>
+              {/* Add state/province options */}
+              <option>Banteay Meanchey</option>
+              <option>Battambang</option>
+              <option>Kampong Cham</option>
+              <option>Kampong Chhnang</option>
+              <option>Kampong Speu</option>
+              <option>Kampong Thom</option>
+              <option>Kampot</option>
+              <option>Kandal</option>
+              <option>Kep</option>
+              <option>Kratié</option>
+              <option>Koh Kong</option>
+              <option>Mondulkiri</option>
+              <option>Oddar Meanchey</option>
+              <option>Pailin</option>
+              <option>Phnom Penh</option>
+              <option>Preah Sihanouk</option>
+              <option>Preah Vihear</option>
+              <option>Pursat</option>
+              <option>Prey Veng</option>
+              <option>Ratanakiri</option>
+              <option>Siem Reap</option>
+              <option>Stung Treng</option>
+              <option>Svay Rieng</option>
+              <option>Takéo</option>
+              <option>Tbong Khmum</option>
             </select>
           </div>
         </div>
@@ -107,6 +143,7 @@ const SignUpLogIn = () => {
             type="text"
             id="zip"
             className="w-full px-4 py-2 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring focus:ring-blue-500"
+            placeholder="Enter ZIP/Postal code"
           />
         </div>
 
@@ -144,4 +181,4 @@ const SignUpLogIn = () => {
   );
 };
 
-export default SignUpLogIn;
+export default LetterBox;
