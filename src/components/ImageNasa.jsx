@@ -2,29 +2,34 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const ImageNasa = () => {
-  const [galleries, setGalleries] = useState([]);
+  const [galleries, setGalleries] = useState({
+    people: [],
+    galaxy: [],
+    landscape: [],
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchGallery = async () => {
       const API_KEY = "vnoaoLR3rJQnYM0wfwSWTnssu967Vp173oqakocY"; // Replace with your NASA API key
-      const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${vnoaoLR3rJQnYM0wfwSWTnssu967Vp173oqakocY}&count=3`;
+      const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=30`; // Fetch 30 images
 
       setIsLoading(true);
 
       try {
         const response = await axios.get(API_URL);
 
-        // Map the response data into the gallery format
-        const fetchedGalleries = response.data.map((item) => ({
-          title: item.title,
-          images: 1, // Each APOD entry is a single image
-          imgSrc: item.url,
-          description: item.explanation,
-        }));
+        // Manually categorize images (simulate categories)
+        const people = response.data.slice(0, 10); // First 10 images for 'People'
+        const galaxy = response.data.slice(10, 20); // Next 10 images for 'Galaxy'
+        const landscape = response.data.slice(20, 30); // Last 10 images for 'Landscape'
 
-        setGalleries(fetchedGalleries);
+        setGalleries({
+          people,
+          galaxy,
+          landscape,
+        });
       } catch (err) {
         setError('Failed to fetch images. Please try again later.');
         console.error('Error fetching gallery data:', err);
@@ -44,27 +49,34 @@ const ImageNasa = () => {
     return <p>Loading...</p>;
   }
 
-  return (
-    <div className="p-8 bg-white">
-      <h2 className="text-2xl font-bold mb-6">More NASA Images</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {galleries.map((gallery, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform"
-          >
+  const renderGalleryCard = (images, title) => {
+    const previewImages = images.slice(0, 3); // Show first 3 images as previews
+
+    return (
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform p-4">
+        <h3 className="text-lg font-bold mb-2">{title}</h3>
+        <div className="flex space-x-2 mb-2">
+          {previewImages.map((image, index) => (
             <img
-              src={gallery.imgSrc}
-              alt={gallery.title}
-              className="w-full h-48 object-cover"
+              key={index}
+              src={image.url}
+              alt={image.title}
+              className="w-1/3 h-24 object-cover rounded-md"
             />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold">{gallery.title}</h3>
-              <p className="text-gray-600">{gallery.images} IMAGE</p>
-              <p className="text-sm text-gray-500 mt-2">{gallery.description}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <p className="text-gray-600 text-sm">{images.length} IMAGES</p>
+      </div>
+    );
+  };
+
+  return (
+    <div className="p-8 bg-gray-100">
+      <h2 className="text-2xl font-bold mb-6">More NASA Images</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {renderGalleryCard(galleries.people, 'People')}
+        {renderGalleryCard(galleries.galaxy, 'Galaxy')}
+        {renderGalleryCard(galleries.landscape, 'Landscape')}
       </div>
     </div>
   );

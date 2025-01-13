@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MdSaveAlt } from "react-icons/md";
-import axios from 'axios'; // Make sure to install axios: npm install axios
+import axios from 'axios';
 
 const ImageOfTheDay = () => {
   const [imageData, setImageData] = useState({
@@ -14,7 +14,7 @@ const ImageOfTheDay = () => {
   useEffect(() => {
     const fetchAPOD = async () => {
       const API_KEY = "vnoaoLR3rJQnYM0wfwSWTnssu967Vp173oqakocY"; // Replace with your NASA API key
-      const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${vnoaoLR3rJQnYM0wfwSWTnssu967Vp173oqakocY}`;
+      const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
       try {
         const response = await axios.get(API_URL);
@@ -24,9 +24,9 @@ const ImageOfTheDay = () => {
           url: response.data.url,
           media_type: response.data.media_type,
         });
-        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching APOD data:', error);
+      } finally {
         setIsLoading(false);
       }
     };
@@ -68,7 +68,6 @@ const ImageOfTheDay = () => {
           >
             Browse Image Archive
           </a>
-          {/* Red circle with arrow next to the link */}
           <div className="bg-red-500 w-4 h-4 rounded-full flex items-center justify-center ml-2">
             <span className="text-white text-sm">→</span>
           </div>
@@ -82,7 +81,6 @@ const ImageOfTheDay = () => {
           alt={imageData.title}
           className="w-full h-full object-cover"
         />
-        {/* Save Picture Button */}
         <button
           onClick={handleDownload}
           className="absolute bottom-4 right-4 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700"
