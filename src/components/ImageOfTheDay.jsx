@@ -1,17 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdSaveAlt } from "react-icons/md";
+import axios from 'axios'; // Make sure to install axios: npm install axios
 
 const ImageOfTheDay = () => {
-  // Image URL
-  const imageUrl = "/image/galaxy-night-landscape.avif"; // You can replace this with your image URL
+  const [imageData, setImageData] = useState({
+    title: '',
+    explanation: '',
+    url: '',
+    media_type: '',
+  });
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Function to trigger the download
+  useEffect(() => {
+    const fetchAPOD = async () => {
+      const API_KEY = "vnoaoLR3rJQnYM0wfwSWTnssu967Vp173oqakocY"; // Replace with your NASA API key
+      const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${vnoaoLR3rJQnYM0wfwSWTnssu967Vp173oqakocY}`;
+
+      try {
+        const response = await axios.get(API_URL);
+        setImageData({
+          title: response.data.title,
+          explanation: response.data.explanation,
+          url: response.data.url,
+          media_type: response.data.media_type,
+        });
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching APOD data:', error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchAPOD();
+  }, []);
+
   const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = imageUrl;
-    link.download = 'witch-nebula.avif'; // You can change the file name here
-    link.click();
+    if (imageData.url) {
+      const link = document.createElement('a');
+      link.href = imageData.url;
+      link.download = `${imageData.title}.jpg`; // Default to .jpg
+      link.click();
+    }
   };
+
+  if (isLoading) {
+    return <p>Loading...</p>; // Show a loading indicator
+  }
+
+  if (imageData.media_type !== 'image') {
+    return <p>The media type for today is not an image. Check out the APOD site for more!</p>;
+  }
 
   return (
     <div className="flex flex-col lg:flex-row bg-white overflow-hidden px-8 py-12 relative">
@@ -19,13 +57,13 @@ const ImageOfTheDay = () => {
       <div className="flex flex-col justify-center lg:w-1/2 relative lg:pr-8">
         <p className="text-xs uppercase text-gray-400 tracking-wide absolute top-0 left-0 z-10 mb-0">Today</p>
         <h1 className="text-5xl font-bold text-gray-800 absolute top-5 left-0 z-10 mb-8">Image Of The Day</h1>
-        <h2 className="text-3xl font-bold text-gray-700 mt-20 mb-2">Witch Nebula Casts Starry Spell</h2>
-        <p className="text-gray-600 mb-4 leading-relaxed">
-          A witch appears to be screaming out into space in this image from NASA’s Wide-Field Infrared Survey Explorer, or WISE. The infrared portrait shows the Witch Head nebula, named after its resemblance to the profile of a wicked witch.
-        </p>
+        <h2 className="text-3xl font-bold text-gray-700 mt-20 mb-2">{imageData.title}</h2>
+        <p className="text-gray-600 mb-4 leading-relaxed">{imageData.explanation}</p>
         <div className="flex items-center mb-2">
           <a
-            href="#"
+            href="https://apod.nasa.gov/apod/archivepix.html"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-600 font-semibold hover:underline"
           >
             Browse Image Archive
@@ -40,8 +78,8 @@ const ImageOfTheDay = () => {
       {/* Image Section */}
       <div className="lg:w-1/2 relative">
         <img
-          src={imageUrl}
-          alt="Witch Nebula"
+          src={imageData.url}
+          alt={imageData.title}
           className="w-full h-full object-cover"
         />
         {/* Save Picture Button */}
