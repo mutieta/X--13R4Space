@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Left Section */}
           <div>
             {/* NASA Logo */}
-            <img src="path-to-nasa-logo.png" alt="NASA Logo" className="w-16 mb-4" />
+            <img src="./image/nasa-logo.png" alt="NASA Logo" className="w-16 mb-4" />
             {/* Organization Title */}
             <h3 className="text-xl font-bold">National Aeronautics and Space Administration</h3>
             {/* Organization Description */}

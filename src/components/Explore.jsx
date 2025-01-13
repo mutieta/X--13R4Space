@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 const Explore = () => {
   return (
@@ -18,7 +19,7 @@ const Explore = () => {
           *We will never share your email address. <a href="#" className="underline">Privacy Policy</a>
         </p>
         <div className="flex items-center space-x-2">
-        <a href="/signup" className="text-white text-2xl font-bold hover:underline">
+        <a href="/subscribe" className="text-white text-2xl font-bold hover:underline">
             Sign Up
           </a>
           <span className="w-4 h-4 flex items-center justify-center  bg-red-500  rounded-full text-sm">
