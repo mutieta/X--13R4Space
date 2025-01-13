@@ -3,10 +3,10 @@ import { TiArrowRightThick } from "react-icons/ti";
 
 const Science = () => {
   const scienceData = [
-    { title: "APOD", image: "path-to-apod-image", link: "/apod" },
-    { title: "SpaceX Mission", image: "path-to-spacex-image", link: "/spacex-mission" },
-    { title: "People of NASA Science", image: "path-to-nasa-image", link: "/nasa-people" },
-    { title: "Skywatching", image: "path-to-skywatching-image", link: "/skywatching" },
+    { title: "APOD", image: "./image/earth.webp", link: "/apod" },
+    { title: "SpaceX Mission", image: "./image/spacemission.jpeg", link: "/spacex-mission" },
+    { title: "People of NASA Science", image: "./image/astronauts.webp", link: "/nasa-people" },
+    { title: "Skywatching", image: "./image/sky-watching.webp", link: "/skywatching" },
   ];
 
   return (
