@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { HiOutlineArrowCircleDown } from "react-icons/hi";
+import { HiOutlineArrowCircleDown, HiOutlineArrowCircleUp } from "react-icons/hi";
 import { FiChevronDown, FiSearch } from "react-icons/fi";
 import { FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";

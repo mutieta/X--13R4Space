@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const ImageNasa = () => {
   const [galleries, setGalleries] = useState({
-    people: [],
+    space: [],
     galaxy: [],
     landscape: [],
   });
@@ -21,12 +21,12 @@ const ImageNasa = () => {
         const response = await axios.get(API_URL);
 
         // Manually categorize images (simulate categories)
-        const people = response.data.slice(0, 10); // First 10 images for 'People'
+        const space = response.data.slice(0, 10); // First 10 images for 'People'
         const galaxy = response.data.slice(10, 20); // Next 10 images for 'Galaxy'
         const landscape = response.data.slice(20, 30); // Last 10 images for 'Landscape'
 
         setGalleries({
-          people,
+          space,
           galaxy,
           landscape,
         });
@@ -74,7 +74,7 @@ const ImageNasa = () => {
     <div className="p-8 bg-gray-100">
       <h2 className="text-2xl font-bold mb-6">More NASA Images</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {renderGalleryCard(galleries.people, 'People')}
+        {renderGalleryCard(galleries.space, 'Space')}
         {renderGalleryCard(galleries.galaxy, 'Galaxy')}
         {renderGalleryCard(galleries.landscape, 'Landscape')}
       </div>
