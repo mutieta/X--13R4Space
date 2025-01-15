@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 import { TiArrowRightThick } from "react-icons/ti";
 
 const Science = () => {
@@ -6,31 +7,30 @@ const Science = () => {
     { title: "APOD", image: "./image/earth.webp", link: "/apod" },
     { title: "SpaceX Mission", image: "./image/spacemission.jpeg", link: "/spacex-mission" },
     { title: "People of NASA Science", image: "./image/astronauts.webp", link: "/nasa-people" },
-    { title: "Skywatching", image: "./image/sky-watching.webp", link: "/skywatching" },
+    { title: "Skywatching", image: "./image/sky-watching.webp", link: "/Asteroids" },
   ];
 
   return (
     <div className="bg-white py-12 px-8">
       {/* Header Section */}
       <div className="flex items-center justify-between mb-6">
-          <h2 className="text-4xl font-bold text-gray-800">Science</h2>
-          <div className="flex items-center space-x-2">
-            <a href="/more-news" className="text-black-600 font-bold hover:underline">
-              Doscover more
-            </a>
-            <span className="w-6 h-6 flex items-center justify-center border-4 border-red-500 text-red-500 rounded-full text-sm">
+        <h2 className="text-4xl font-bold text-gray-800">Science</h2>
+        <div className="flex items-center space-x-2">
+          <Link to="/more-news" className="text-black-600 font-bold hover:underline">
+            Discover more
+          </Link>
+          <span className="w-6 h-6 flex items-center justify-center border-4 border-red-500 text-red-500 rounded-full text-sm">
             <TiArrowRightThick />
-            </span>
-
-          </div>
+          </span>
         </div>
+      </div>
 
       {/* Card Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {scienceData.map((item, index) => (
-          <a
+          <Link
             key={index}
-            href={item.link}
+            to={item.link}
             className="relative group bg-black text-white overflow-hidden"
           >
             <img
@@ -44,7 +44,7 @@ const Science = () => {
             <div className="absolute bottom-4 right-4 bg-red-500 w-6 h-6 rounded-full flex items-center justify-center">
               <span className="text-white text-sm">→</span>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

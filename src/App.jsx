@@ -6,6 +6,7 @@ import NewsPage from './components/NewsPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer'; 
 import Subscribe from "./components/LetterBox";
+import Asteroids from './components/Asteroids';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<LandingPage/>} />
           <Route path="/news" element={<NewsPage />}/>
           <Route path="/subscribe" element={<Subscribe />} />
+          <Route path="/Asteroids" element={<Asteroids />} />
           <Route path="*" element={<div>404 - Page Not Found</div>}/>
         </Routes>
       </div>
