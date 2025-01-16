@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer'; 
 import Subscribe from "./components/LetterBox";
 import Asteroids from './components/Asteroids';
+import PeopleOfNasa from './components/PeopleOfNasa';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/news" element={<NewsPage />}/>
           <Route path="/subscribe" element={<Subscribe />} />
           <Route path="/Asteroids" element={<Asteroids />} />
+          <Route path="/PeopleOfNasa" element={<PeopleOfNasa />} />
           <Route path="*" element={<div>404 - Page Not Found</div>}/>
         </Routes>
       </div>

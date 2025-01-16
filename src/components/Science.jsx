@@ -6,7 +6,7 @@ const Science = () => {
   const scienceData = [
     { title: "APOD", image: "./image/earth.webp", link: "/apod" },
     { title: "SpaceX Mission", image: "./image/spacemission.jpeg", link: "/spacex-mission" },
-    { title: "People of NASA Science", image: "./image/astronauts.webp", link: "/nasa-people" },
+    { title: "Nasa Astronauts", image: "./image/astronauts.webp", link: "/PeopleOfNasa" },
     { title: "Skywatching", image: "./image/sky-watching.webp", link: "/Asteroids" },
   ];
 
