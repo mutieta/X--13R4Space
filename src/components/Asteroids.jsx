@@ -3,27 +3,64 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 
 const Asteroids = () => {
-  const [featuredItems, setFeaturedItems] = useState([
-    {
-      title: "What's Up: November 2024",
-      description: "This month, Saturn shines in the south most of the night, Jupiter rises in the early evening alongside Taurus and Orion, while Mars trails a couple of hours behind, visible high in the early morning sky.",
-      image: "url-to-your-image-1",
-      link: "#",
-      extraInfo: "Jupiter is high overhead below with the bright stars of Taurus and Orion. Jupiter is the bright object at top, right of center.",
-      photographer: "NASA/Preston Dyches"
-    },
-    {
-      title: "What is a Supermoon?",
-      description: "A supermoon occurs when the Moon's orbit is closest (perigee) to Earth at the same time the Moon is full. So what's so special about a supermoon? For the interested observer, there's plenty to see and learn.",
-      image: "url-to-your-image-2",
-      link: "#",
-      extraInfo: "The moon, or supermoon, is seen as it sets over the Martin Luther King Jr. Memorial on Monday, Nov. 14, 2016.",
-      photographer: "NASA/Aubrey Gemignani"
-    }
-  ]);
+  const [featuredItems, setFeaturedItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Reverse the order of the items so the second one comes first
-  const reversedItems = [...featuredItems].reverse();
+  const apiKey = "vnoaoLR3rJQnYM0wfwSWTnssu967Vp173oqakocY"; // Replace with your NASA API key
+
+  useEffect(() => {
+    const fetchAPOD = async () => {
+      try {
+        const today = new Date();
+        const requests = [];
+        for (let i = 0; i < 7; i++) {
+          const date = new Date(today);
+          date.setDate(today.getDate() - i);
+          const formattedDate = date.toISOString().split("T")[0];
+          requests.push(
+            fetch(
+              `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`
+            ).then((res) => res.json())
+          );
+        }
+
+        const results = await Promise.all(requests);
+
+        // Filter out undefined or missing data
+        const validResults = results.filter(item => item && item.title);
+
+        // Fill the featuredItems array with valid data, ensuring no duplicates
+        const adjustedResults = [];
+        for (let i = 0; i < 7; i++) {
+          if (validResults[i]) {
+            adjustedResults.push(validResults[i]);
+          } else {
+            // If data is missing, continue to the next available day
+            if (validResults[i + 1]) {
+              adjustedResults.push(validResults[i + 1]);
+            }
+          }
+        }
+
+        setFeaturedItems(adjustedResults);
+      } catch (err) {
+        setError("Failed to fetch APOD data. Please check your API key.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAPOD();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="text-red-500">{error}</div>;
+  }
 
   return (
     <>
@@ -48,31 +85,43 @@ const Asteroids = () => {
           <div>
             <h1 className="text-6xl md:text-8xl font-bold">Skywatching</h1>
             <p className="text-lg md:text-2xl mt-4 text-white-300">
-              Tips, guides, and activities for skywatchers.
+            What exciting events are unfolding in our galaxy this week?
             </p>
           </div>
         </div>
       </div>
 
       {/* Featured Section with White Background */}
-      <div className="max-w-7xl mx-auto p-6 bg-white">
-        <h1 className="text-3xl font-bold mb-6 text-black">Featured</h1>
+      <div className="p-6 bg-white">
+        <h1 className="text-5xl font-bold mb-8 text-black">Featured</h1>
         <div className="space-y-8">
-          {reversedItems.map((item, index) => (
+          {featuredItems.map((item, index) => (
             <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-             
               {/* Image Block */}
-              <div className={index === 1 ? "order-1 md:order-2" : "order-2 md:order-1"}>
-                <img src={item.image} alt="Featured image" className="w-full h-auto object-cover rounded-md" />
+              <div className={index % 2 === 0 ? "order-1 md:order-2" : "order-2 md:order-1"}>
+                <img
+                  src={item.url}
+                  alt={item.title || "Image unavailable"}
+                  className="w-full h-auto object-cover rounded-md"
+                />
               </div>
-              
-               {/* Text Block */}
-               <div className={index === 1 ? "order-2 md:order-1" : "order-1 md:order-2"}>
-                <h2 className="text-xl font-bold mb-2 text-black">{`0${index + 1} ${item.title}`}</h2>
-                <p className="text-gray-700 mb-4">{item.description}</p>
-                <a href={item.link} className="text-red-600 font-semibold">Explore</a>
-                <p className="mt-4 text-gray-500 text-sm">{item.extraInfo}</p>
-                <p className="text-gray-500 text-sm">{item.photographer}</p>
+
+              {/* Text Block */}
+              <div className={index % 2 === 0 ? "order-2 md:order-1" : "order-1 md:order-2"}>
+                <h2 className="text-xl font-bold mb-2 text-black">
+                  {`${(index + 1).toString().padStart(2, "0")} ${item.title || "No Title Available"}`}
+                </h2>
+                <p className="text-gray-700 mb-4">{item.explanation || "No explanation available."}</p>
+                <a
+                  href={item.hdurl || item.url || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-red-600 font-semibold"
+                >
+                  Explore
+                </a>
+                <p className="mt-4 text-gray-500 text-sm">{item.date || "Date unavailable"}</p>
+                <p className="text-gray-500 text-sm">{item.copyright || "NASA"}</p>
               </div>
             </div>
           ))}
