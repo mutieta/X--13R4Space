@@ -1,6 +1,5 @@
 import React from "react";
 import { TiArrowRightThick } from "react-icons/ti";
-import { Navigate } from "react-router-dom";
 
 function FeatureNews() {
   // Featured articles data
