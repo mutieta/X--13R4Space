@@ -138,32 +138,33 @@ const Navbar = () => {
           </div>
 
           {/* Suggested Searches */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">Suggested Searches</h3>
-            <ul className="space-y-4">
-              {[
-                "Climate Change",
-                "Artemis",
-                "Expedition 64",
-                "Mars Perseverance",
-                "SpaceX Crew-2",
-                "International Space Station",
-              ].map((item, index) => (
-                <li
-                  key={index}
-                  className="flex items-center justify-between border-b border-gray-200 pb-2"
-                >
-                  <div className="flex items-center space-x-2">
-                    <FiSearch className="text-gray-500" />
-                    <span>{item}</span>
-                  </div>
-                </li>
-              ))}
-              <li className="text-blue-500 cursor-pointer pt-2 pb-7">
-                View All Topics A-Z
-              </li>
-            </ul>
-          </div>
+         <div className="bg-black text-white p-4 rounded-lg">
+  <h3 className="text-lg font-bold mb-4">Suggested Searches</h3>
+  <ul className="space-y-4">
+    {[
+      "Climate Change",
+      "Artemis",
+      "Expedition 64",
+      "Mars Perseverance",
+      "SpaceX Crew-2",
+      "International Space Station",
+    ].map((item, index) => (
+      <li
+        key={index}
+        className="flex items-center justify-between border-b border-gray-200 pb-2"
+      >
+        <div className="flex items-center space-x-2">
+          <FiSearch className="text-gray-500" />
+          <span>{item}</span>
+        </div>
+      </li>
+    ))}
+    <li className="text-blue-500 cursor-pointer pt-2 pb-7">
+      View All Topics A-Z
+    </li>
+  </ul>
+</div>
+
         </div>
       )}
     </header>

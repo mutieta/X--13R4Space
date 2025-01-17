@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from './Footer'; // Footer component for the page footer
-import MoreNews from './MoreNews'; // MoreNews component for additional news items
+// import Footer from './Footer'; // Footer component for the page footer
+// import MoreNews from './MoreNews'; // MoreNews component for additional news items
 import { LiaLinkedinIn } from "react-icons/lia";
 import { TiSocialFacebook } from "react-icons/ti";
 import { RiTwitterXLine } from "react-icons/ri";
@@ -31,13 +31,13 @@ function NewsPage() {
 
           {/* Social Media Links */}
           <div className="flex space-x-4">
-            <a href="#" className="text-white hover:text-blue-500">
+            <a href="#" className="text-white hover:text-blue-500" aria-label="Twitter">
               <RiTwitterXLine className="h-6 w-6 bg-blue-600 rounded-sm" />
             </a>
-            <a href="#" className="text-white hover:text-blue-500">
+            <a href="#" className="text-white hover:text-blue-500" aria-label="Facebook">
               <TiSocialFacebook className="h-6 w-6 bg-blue-500 rounded-sm" />
             </a>
-            <a href="#" className="text-white hover:text-blue-500">
+            <a href="#" className="text-white hover:text-blue-500" aria-label="LinkedIn">
               <LiaLinkedinIn className="h-6 w-6 bg-blue-400 rounded-sm" />
             </a>
           </div>
@@ -74,9 +74,10 @@ function NewsPage() {
             </div>
             <div className="my-6">
               <img
-                className="w-full rounded-lg"
-                src="https://www.nasa.gov/sites/default/files/thumbnails/image/solar-sail.jpg"
+                className="w-full"
+                src="./image/acs.jpg" // Updated path
                 alt="Solar Sail with Composite Booms"
+                loading="lazy"
               />
               <p className="text-gray-600 text-sm mt-2">
                 Meisa Perez, left, holds a deployable solar panel as Doug Tarr, right, secures it to the
@@ -87,7 +88,6 @@ function NewsPage() {
           </article>
         </main>
       </div>
-      <MoreNews />
     </div>
   );
 }
