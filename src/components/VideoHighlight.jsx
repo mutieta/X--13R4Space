@@ -14,14 +14,7 @@ const VideoHighlight = () => {
 
       {/* Video Section */}
       <div className="lg:w-[62.5%] flex justify-center w-full">
-        <iframe
-          className="w-full h-64 lg:h-96 rounded-lg shadow-lg"
-          src="https://www.youtube.com/embed/WeA7edXsU40"
-          title="Hubble's Highlights from its 34th Year in Orbit"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/6vo9tFsUn8s?si=cuQz5uZQhXzZ__Ko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   );
