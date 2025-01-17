@@ -85,7 +85,7 @@ const Asteroids = () => {
           <div>
             <h1 className="text-6xl md:text-8xl font-bold">Skywatching</h1>
             <p className="text-lg md:text-2xl mt-4 text-white-300">
-            What exciting events are unfolding in our galaxy this week?
+              What exciting events are unfolding in our galaxy this week?
             </p>
           </div>
         </div>
@@ -97,17 +97,8 @@ const Asteroids = () => {
         <div className="space-y-8">
           {featuredItems.map((item, index) => (
             <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-              {/* Image Block */}
-              <div className={index % 2 === 0 ? "order-1 md:order-2" : "order-2 md:order-1"}>
-                <img
-                  src={item.url}
-                  alt={item.title || "Image unavailable"}
-                  className="w-full h-auto object-cover rounded-md"
-                />
-              </div>
-
-              {/* Text Block */}
-              <div className={index % 2 === 0 ? "order-2 md:order-1" : "order-1 md:order-2"}>
+              {/* Text Block First on Small Screens */}
+              <div className={`order-1 md:order-1 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
                 <h2 className="text-xl font-bold mb-2 text-black">
                   {`${(index + 1).toString().padStart(2, "0")} ${item.title || "No Title Available"}`}
                 </h2>
@@ -122,6 +113,15 @@ const Asteroids = () => {
                 </a>
                 <p className="mt-4 text-gray-500 text-sm">{item.date || "Date unavailable"}</p>
                 <p className="text-gray-500 text-sm">{item.copyright || "NASA"}</p>
+              </div>
+
+              {/* Image Block Second on Small Screens */}
+              <div className={`order-2 md:order-1 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+                <img
+                  src={item.url}
+                  alt={item.title || "Image unavailable"}
+                  className="w-full h-auto object-cover rounded-md"
+                />
               </div>
             </div>
           ))}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { HiOutlineArrowCircleDown, HiOutlineArrowCircleUp } from "react-icons/hi";
+import { HiOutlineArrowCircleDown } from "react-icons/hi";
 import { FiChevronDown, FiSearch } from "react-icons/fi";
 import { FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
@@ -13,6 +13,11 @@ const Navbar = () => {
   // Function to handle navigation to the subscribe page
   const handleProfileClick = () => {
     navigate("/subscribe");
+  };
+
+  // Navigate to LandingPage when Home is clicked
+  const handleHomeClick = () => {
+    navigate("/"); // This navigates to the LandingPage.jsx
   };
 
   // Toggle mobile menu
@@ -44,9 +49,12 @@ const Navbar = () => {
           {/* Dropdown menu */}
           <div className="absolute left-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
             <ul>
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Option 1</li>
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Option 2</li>
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Option 3</li>
+              <li
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                onClick={handleHomeClick} // Navigate to LandingPage when clicked
+              >
+                Home
+              </li>
             </ul>
           </div>
         </div>
@@ -138,33 +146,32 @@ const Navbar = () => {
           </div>
 
           {/* Suggested Searches */}
-         <div className="bg-black text-white p-4 rounded-lg">
-  <h3 className="text-lg font-bold mb-4">Suggested Searches</h3>
-  <ul className="space-y-4">
-    {[
-      "Climate Change",
-      "Artemis",
-      "Expedition 64",
-      "Mars Perseverance",
-      "SpaceX Crew-2",
-      "International Space Station",
-    ].map((item, index) => (
-      <li
-        key={index}
-        className="flex items-center justify-between border-b border-gray-200 pb-2"
-      >
-        <div className="flex items-center space-x-2">
-          <FiSearch className="text-gray-500" />
-          <span>{item}</span>
-        </div>
-      </li>
-    ))}
-    <li className="text-blue-500 cursor-pointer pt-2 pb-7">
-      View All Topics A-Z
-    </li>
-  </ul>
-</div>
-
+          <div className="bg-black text-white p-4 rounded-lg">
+            <h3 className="text-lg font-bold mb-4">Suggested Searches</h3>
+            <ul className="space-y-4">
+              {[
+                "Climate Change",
+                "Artemis",
+                "Expedition 64",
+                "Mars Perseverance",
+                "SpaceX Crew-2",
+                "International Space Station",
+              ].map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-center justify-between border-b border-gray-200 pb-2"
+                >
+                  <div className="flex items-center space-x-2">
+                    <FiSearch className="text-gray-500" />
+                    <span>{item}</span>
+                  </div>
+                </li>
+              ))}
+              <li className="text-blue-500 cursor-pointer pt-2 pb-7">
+                View All Topics A-Z
+              </li>
+            </ul>
+          </div>
         </div>
       )}
     </header>

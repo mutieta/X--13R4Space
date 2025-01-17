@@ -4,8 +4,8 @@ import { TiArrowRightThick } from "react-icons/ti";
 
 const Science = () => {
   const scienceData = [
-    { title: "APOD", image: "./image/earth.webp", link: "/apod" },
-    { title: "SpaceX Mission", image: "./image/spacemission.jpeg", link: "/spacex-mission" },
+    { title: "APOD", image: "./image/earth.webp", link: "/Apod" },
+    { title: "SpaceX Mission", image: "./image/spacemission.jpeg", link: "/SpaceXmission" },
     { title: "Nasa Astronauts", image: "./image/astronauts.webp", link: "/PeopleOfNasa" },
     { title: "Skywatching", image: "./image/sky-watching.webp", link: "/Asteroids" },
   ];

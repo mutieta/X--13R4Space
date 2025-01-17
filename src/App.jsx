@@ -1,13 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import HomePage from './components/HomePage';
 import LandingPage from './components/LandingPage';
 import NewsPage from './components/NewsPage';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer'; 
 import Subscribe from "./components/LetterBox";
 import Asteroids from './components/Asteroids';
 import PeopleOfNasa from './components/PeopleOfNasa';
+import ApodDetail from './components/ApodDetail';
+import Apod from './components/Apod';
+import SpaceXmission from './components/SpaceXmission';
+import MissionSummarize from './components/MissionSummarize';
+
 
 function App() {
   return (
@@ -20,7 +22,11 @@ function App() {
           <Route path="/subscribe" element={<Subscribe />} />
           <Route path="/Asteroids" element={<Asteroids />} />
           <Route path="/PeopleOfNasa" element={<PeopleOfNasa />} />
-          <Route path="*" element={<div>404 - Page Not Found</div>}/>
+          <Route path="/ApodDetail" element={<ApodDetail/> } />
+          <Route path="/Apod" element ={<Apod/>} />
+          <Route path="/SpaceXmission" element={<SpaceXmission/>}  />
+          <Route path="/MissionSummarize/:id" element={<MissionSummarize/>} />  
+          <Route path="*" element={<div>404 - Page Not Found</div>} />
         </Routes>
       </div>
     </BrowserRouter> 
