@@ -67,10 +67,10 @@ xospace/
 
 ```
 Dependencies
-React: A JavaScript library for building user interfaces.
-react-router-dom: Declarative routing for React applications.
-react-leaflet: React components for Leaflet maps.
-tailwindcss: A utility-first CSS framework for rapid UI development.
-react-icons: Popular icons as React components.
-Contributing
-Contributions are welcome! Please follow these steps to contribute:  
+- React: A JavaScript library for building user interfaces.
+- react-router-dom: Declarative routing for React applications.
+- react-leaflet: React components for Leaflet maps.
+- tailwindcss: A utility-first CSS framework for rapid UI development.
+- react-icons: Popular icons as React components.
+- Contributing
+- Contributions are welcome! Please follow these steps to contribute:  
